@@ -62,7 +62,7 @@ def run_cli():
                 for seat_id, name in store.list_seats():
                     # 예약자가 없는 좌석만 출력
                     if name is None:
-                        _print_seat(seat_id, name)
+                       _print_seat(seat_id, name)
             else:
                 print("Unknown command. Type 'help' for commands.")
         except ValueError as exc:
