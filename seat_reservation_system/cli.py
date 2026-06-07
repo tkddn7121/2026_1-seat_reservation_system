@@ -63,8 +63,6 @@ def run_cli():
                     # 예약자가 없는 좌석만 출력
                     if name is None:
                         _print_seat(seat_id, name)
-                        available_count +=1
-                print(f"Available seats: {available_count}")
             else:
                 print("Unknown command. Type 'help' for commands.")
         except ValueError as exc:
