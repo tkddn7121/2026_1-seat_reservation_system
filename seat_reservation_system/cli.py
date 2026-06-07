@@ -1,12 +1,14 @@
 from seat_reservation_system.seat_store import SeatStore
 from seat_reservation_system.seats import SEAT_IDS
 
+# available로 예약 되지 않은 좌석만 조회
 HELP_TEXT = """Commands:
 list                      - List all seats
 reserve <seat_id> <name>  - Reserve a seat
 cancel <seat_id> [name]   - Cancel a reservation
 status <seat_id>          - Show seat status
 stats                     - Show summary stats
+available                 - Show available seats  
 help                      - Show this help
 exit                      - Exit the program"""
 
@@ -55,6 +57,12 @@ def run_cli():
                         **stats
                     )
                 )
+            elif command == "available":
+                # 모든 좌석을 순회하면서 예약 여부 확인
+                for seat_id, name in store.list_seats():
+                    # 예약자가 없는 좌석만 출력
+                    if name is None:
+                        _print_seat(seat_id, name)
             else:
                 print("Unknown command. Type 'help' for commands.")
         except ValueError as exc:
